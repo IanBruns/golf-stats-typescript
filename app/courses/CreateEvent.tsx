@@ -1,57 +1,57 @@
-"use client"
+'use client';
 
-import { useState, ChangeEvent, FormEventHandler } from "react"
-import { useRouter } from "next/navigation"
+import { useState, ChangeEvent, FormEventHandler } from 'react';
+import { useRouter } from 'next/navigation';
 
-import { postCourse } from "./api"
+import { postCourse } from './api';
 
 export default function CreateEvent() {
-  const [creating, setCreating] = useState(false)
-  const [matchName, setMatchName] = useState("")
+  const [creating, setCreating] = useState(false);
+  const [matchName, setMatchName] = useState('');
   const [results, setResults] = useState([
     {
       hole: 1,
       par: null,
       score: null,
     },
-  ])
+  ]);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleCreate = () => {
-    setCreating(true)
-  }
+    setCreating(true);
+  };
 
   const handleCancel = () => {
-    setMatchName("")
+    setMatchName('');
     setResults([
       {
         hole: 1,
         par: null,
         score: null,
       },
-    ])
-    setCreating(false)
-  }
+    ]);
+    setCreating(false);
+  };
 
   const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setMatchName(e.target.value)
-  }
+    setMatchName(e.target.value);
+  };
 
   const handleSubmit = async () => {
-    await postCourse({ matchName, results })
-    setMatchName("")
-    setCreating(false)
+    await postCourse({ matchName, results });
+    setMatchName('');
+    setCreating(false);
 
-    router.refresh()
-  }
+    router.refresh();
+  };
 
   const submitButtonDisabled =
-    !matchName.length || results.some(result => !result.par || !result.score)
+    !matchName.length || results.some((result) => !result.par || !result.score);
 
-  return  (
-      <>
-        {creating ? (
+  return (
+    <>
+      {creating ? (
         <>
           <form onSubmit={handleSubmit}>
             <label htmlFor="name">Match Name</label>
@@ -68,5 +68,5 @@ export default function CreateEvent() {
         <button onClick={handleCreate}>Create</button>
       )}
     </>
-  )
+  );
 }

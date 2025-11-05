@@ -1,5 +1,3 @@
-import { Course } from "./course";
+import { Course } from './course';
 
-export type {
-  Course
-}
+export type { Course };
