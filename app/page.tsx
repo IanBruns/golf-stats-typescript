@@ -12,5 +12,5 @@ export default function HomePage() {
       </ul>
       <p>This a NextJS Project assisted by Pocketbase and testing-library</p>
     </div>
-  )
+  );
 }

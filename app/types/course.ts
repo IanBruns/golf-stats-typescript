@@ -1,4 +1,4 @@
 export type Course = {
-id: string;
-matchName: string;
-}
+  id: string;
+  matchName: string;
+};
